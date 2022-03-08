@@ -33,8 +33,7 @@ const createRouter = function (collection) {
     const newData = req.body;
     collection
       .insertOne(newData)
-      .then((result) => res.json(result))
-      .then(() => collection.find().toArray())
+      .then((result) => res.json(result.ops[0]))
       .catch((err) => {
         console.error(err);
         res.status(500);
